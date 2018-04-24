@@ -1,7 +1,7 @@
 var friends = [
 	{
 		"name": "Chad",
-		"photo": "https://jpg",
+		"photo": "https://cdn.theatlantic.com/static/mt/assets/science/cat_caviar.jpg",
 		"scores": [
 			"1",
 			"1",
@@ -17,7 +17,7 @@ var friends = [
 	},
 	{
 		"name": "Sonora",
-		"photo": "https://jpg",
+		"photo": "https://static-news.moneycontrol.com/static-mcnews/2017/04/thinking-woman-laptop-1280X720-770x433.jpg",
 		"scores": [
 			"2",
 			"3",
@@ -33,7 +33,7 @@ var friends = [
 	},
 	{
 		"name": "Ty",
-		"photo": "https://jpg",
+		"photo": "https://static.boredpanda.com/blog/wp-content/uploads/2016/06/1970-stock-photos-robert-armstrong-30-575ea45e48a81__880.jpg",
 		"scores": [
 			"3",
 			"3",
@@ -49,7 +49,7 @@ var friends = [
 	},
 	{
 		"name": "Jen",
-		"photo": "https://jpg",
+		"photo": "https://orig00.deviantart.net/463a/f/2007/286/3/9/student_witch___5_by_mjranum_stock.jpg",
 		"scores": [
 			"1",
 			"2",
@@ -65,7 +65,7 @@ var friends = [
 	},
 	{
 		"name": "Reed",
-		"photo": "https://jpg",
+		"photo": "https://strategylab.ca/wp-content/uploads/2016/02/Why-did-you-shit-on-my-chest-stratlab-stock-photo.jpg",
 		"scores": [
 			"2",
 			"4",
