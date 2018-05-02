@@ -3,37 +3,58 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var friends = require('../data/friends.js');
 var router = express.Router();
-//this get prints out my array of friends
-router.get('/friends', function (req, res) {
-	return res.json(friends);
-});
 
-router.post('/friends', function (req, res) {
-	var newFriend = req.body;
-	console.log(newFriend);
+module.exports = function (app) {
+	//this get prints out my array of friends
+	app.get('/api/friends', function (req, res) {
+		res.json(friends);
+	});
 
-	var newScores = newFriend.scores;
-	var diffArray = [];
-	var matchIndex = 0;
+	app.post('/api/friends', function (req, res) {
+		var bestFriend = {
+			name: "",
+			photo: "",
 
-	for (var i = 0; i < friends.length; ++i) {
-		var scoreDiff = 0;
-		for (var j = 0; j < newScores.length; ++j) {
-			scoreDiff += Math.abs(parseInt(friends[i].scores[j]) - parseInt(newScores[j]));
+		};
+		console.log(bestFriend);
+
+		var userData = req.body;
+		var score = userData.scores;
+		var difference;
+
+		// Here we loop through all the friend possibilities in the database.
+		for (var i = 0; i < friends.length; i++) {
+			var currentFriend = friends[i];
+			difference = 0;
+
+			console.log(currentFriend.name);
+
+			// We then loop through all the scores of each friend
+			for (var j = 0; j < currentFriend.scores.length; j++) {
+				var currentFriendScore = currentFriend.scores[j];
+				var currentUserScore = score[j];
+
+				// We calculate the difference between the scores and sum them into the totalDifference
+				difference += Math.abs(parseInt(currentUserScore) - parseInt(currentFriendScore));
+			}
+
+
+			if (difference <= bestFriend.friendDifference) {
+
+				bestFriend.name = currentFriend.name;
+				bestFriend.photo = currentFriend.photo;
+				bestFriend.friendDifference = difference;
+			}
 		}
-		diffArray.push(scoreDiff);
-	}
 
-	for (var i = 0; i < diffArray.length; ++i) {
-		if (diffArray[i] <= diffArray[matchIndex]) {
-			matchIndex = i;
-		}
-	}
 
-	console.log(friends[matchIndex]);
-	res.json(friends[matchIndex]);
+		friends.push(userData);
 
-	friends.push(newFriend);
-});
+		res.json(bestFriend);
+	});
+
+
+
+};
 
 module.exports = router;
